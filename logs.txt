@@ -1,0 +1,71 @@
+(mrionvenv) PS C:\Users\STUDENT\Documents\Spring2025\AI System Design\mini2\lab1> python
+Python 3.12.7 (tags/v3.12.7:0b05ead, Oct  1 2024, 03:06:41) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from base_iris import load_local, build, train, score, new_model      
+2025-03-17 14:29:33.619654: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-17 14:29:34.327794: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+starting up iris model service
+>>> dataset = load_local()
+load extended iris dataset
+>>> print(dataset)
+0
+>>> model = build()
+C:\Users\STUDENT\mrionvenv\Lib\site-packages\keras\src\layers\core\dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+2025-03-17 14:29:57.740192: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.    
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+>>> print(model)
+0
+>>> hist = train(model, dataset)
+Epoch 1/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 704us/step - accuracy: 0.3332 - loss: 29.1151      
+Epoch 2/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 683us/step - accuracy: 0.9112 - loss: 0.2579    
+Epoch 3/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 685us/step - accuracy: 0.9726 - loss: 0.0744
+Epoch 4/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 712us/step - accuracy: 0.9712 - loss: 0.0559
+Epoch 5/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 725us/step - accuracy: 0.9814 - loss: 0.0494    
+Epoch 6/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 700us/step - accuracy: 0.9803 - loss: 0.0528    
+Epoch 7/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 773us/step - accuracy: 0.9816 - loss: 0.0442
+Epoch 8/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 681us/step - accuracy: 0.9774 - loss: 0.0484    
+Epoch 9/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 736us/step - accuracy: 0.9798 - loss: 0.0508    
+Epoch 10/10
+960/960 ━━━━━━━━━━━━━━━━━━━━ 1s 724us/step - accuracy: 0.9899 - loss: 0.0284    
+{'accuracy': [0.4416666626930237, 0.9333333373069763, 0.9708333611488342, 0.971875011920929, 0.9802083373069763, 0.9822916388511658, 0.981249988079071, 0.984375, 0.984375, 0.9854166507720947], 'loss': [10.222216606140137, 0.19861766695976257, 0.072862908244133, 0.06149238348007202, 0.05108266323804855, 0.05194356292486191, 0.045481953769922256, 0.04264949634671211, 0.04376671835780144, 0.03640449792146683]}
+Test loss: 0.06859228014945984
+Test accuracy: 0.9791666865348816
+8/8 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step 
+Actual: [0 0 0 0 1 1 0 2 2 2 0 2 0 0 0 1 2 0 0 2 2 2 2 2 2 0 1 0 2 2 0 0 2 1 1 2 0
+ 2 2 1 2 0 1 0 1 1 0 2 2 1 1 2 2 2 2 2 0 0 1 2 0 1 0 1 2 1 1 1 1 2 1 2 1 1
+ 1 2 2 2 0 1 2 2 1 0 0 2 0 1 1 2 1 1 2 0 1 0 1 2 2 1 1 0 1 2 0 0 0 2 0 2 0
+ 1 2 2 1 1 1 1 2 2 0 1 1 0 2 1 2 2 1 2 1 1 1 1 2 2 2 2 0 0 0 2 0 2 2 1 0 2
+ 1 2 2 1 1 0 1 0 0 1 0 1 0 1 2 0 0 0 1 0 2 2 2 2 2 2 1 1 1 1 2 0 1 1 1 2 1
+ 2 1 0 2 2 1 1 0 0 2 1 0 1 0 1 0 2 2 2 0 0 1 1 1 2 0 2 0 1 0 2 1 1 2 1 2 1
+ 2 2 1 0 0 0 2 1 1 2 1 0 2 2 0 1 1 2]
+Predicted: [0 0 0 0 1 1 0 2 2 2 0 2 0 0 0 1 2 0 0 2 2 2 2 2 2 0 1 0 2 2 0 0 2 1 1 2 0
+ 2 1 2 2 0 1 0 1 1 0 2 2 1 1 2 2 2 2 2 0 0 1 2 0 1 0 1 2 1 1 1 1 2 1 2 1 1
+ 1 2 2 2 0 1 2 2 1 0 0 2 0 1 1 2 1 1 2 0 1 0 2 2 1 1 1 0 1 2 0 0 0 2 0 2 0
+ 1 2 2 1 1 1 1 2 2 0 1 1 0 2 1 2 1 1 2 1 1 1 1 2 2 2 2 0 0 0 2 0 2 2 1 0 2
+ 1 2 2 1 1 0 1 0 0 1 0 1 0 1 2 0 0 0 1 0 2 2 2 2 2 2 1 1 1 1 2 0 1 1 1 2 1
+ 2 1 0 2 2 1 1 0 0 2 1 0 1 0 1 0 2 2 2 0 0 1 1 1 2 0 2 0 1 0 2 1 1 2 1 2 1
+ 2 2 1 0 0 0 2 1 1 2 1 0 2 2 0 1 1 2]
+Confusion matrix on test data is [[68  0  0]
+ [ 0 82  2]
+ [ 0  3 85]]
+Precision Score on test data is [1.         0.96470588 0.97701149]
+9802083373069763, 0.9822916388511658, 0.981249988079071, 0.984375, 0.984375, 0.9854166507720947], 'loss': [10.222216606140137, 0.19861766695976257, 0.072862908244133, 0.06149238348007202, 0.05108266323804855, 0.05194356292486191, 0.045481953769922256, 0.04264949634671211, 0.04376671835780144, 0.03640449792146683]}
+>>> features = [5.1, 3.5, 1.4, 0.2, 2.1, 3.3, 4.2, 5.0, 2.5, 3.1, 1.1, 4.5, 3.2, 2.8, 5.3, 4.1, 3.6, 2.2, 1.9, 0.8]
+>>> result = score(model, features)
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 32ms/step
+[[0.03348934 0.5121597  0.45435098]]
+1
+>>> print(result)
+Score done, class=1
+>>> exit()
+(mrionvenv) PS C:\Users\STUDENT\Documents\Spring2025\AI System Design\mini2\lab1> 
