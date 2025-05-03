@@ -53,3 +53,27 @@ If running via Docker:
 docker build -t iris-dashboard .
 docker run -p 4000:4000 iris-dashboard
 ```
+
+## Reflection Questions
+
+### 1. What did you find easy to do in Dash?
+
+Working with visual components like histograms, scatter plots, and tabular displays was intuitive using Dash. The `dcc.Graph`, `dash_table.DataTable`, and `dcc.Dropdown` components were easy to integrate and configure. Additionally, defining layout using Dash’s declarative structure made it straightforward to arrange the UI elements across multiple tabs.
+
+---
+
+### 2. Likewise, what was hard to implement or you didn’t wind up getting it to work?
+
+The most challenging aspect was integrating real-time feedback for long-running operations like model training. Although Dash’s `dcc.Loading` simplified this, getting clear indicators during backend delays required careful planning. Handling state across tabs and managing file uploads in sync with API calls also involved debugging and precise callback structuring.
+
+---
+
+### 3. What other components, or what revised dashboard design, would you suggest to better assist in explaining the behavior of the Iris model to a client?
+
+To improve the user experience, I would suggest including a confusion matrix summary with per-class precision and recall, as well as feature importance plots (e.g., bar charts) if available from the model. Adding a log pane that shows detailed API responses and model internals could help clients understand what’s happening behind the scenes. A dropdown to toggle between different models or training sessions would also make it more interactive for demonstrations.
+
+---
+
+### 4. Can you think of better ways to link the “back end” Iris model and its results with the front-end Dash functions?
+
+One improvement could be persistent state management using `dcc.Store` or writing temporary logs to a database or cache. This would allow the backend to push status updates or metrics to the frontend without requiring manual refreshes. Additionally, switching to WebSockets or long-polling callbacks could offer more responsive updates during training or testing, especially for deployments beyond local development.
